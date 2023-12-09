@@ -255,7 +255,7 @@ if (height) {
 }
  */
 
-const age = 18;
+/* const age = 18;
 if (age === 18) console.log("You just became an adult :D (strict)");
 
 if (age == 18) console.log("You just became an adult :D (loose)");
@@ -276,3 +276,106 @@ if (favorite === 23) {
 }
 
 if (favorite !== 23) console.log("Why not 23?");
+ */
+
+/* const hasDriversLicense = true;
+const hasGoodVision = false;
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+
+/* if (shouldDrive) {
+  console.log("Sarah is able to drive!");
+} else {
+  console.log("Someone else should drive");
+}
+ 
+const isTired = false;
+console.log(hasDriversLicense && hasGoodVision && !isTired);
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log("Sarah is able to drive!");
+} else {
+  console.log("Someone else should drive");
+}
+ */
+
+/* Coding Challenge #3
+There are two gymnastics teams, Dolphins and Koalas. They compete against each
+other 3 times. The winner with the highest average score wins a trophy!
+Your tasks:
+1. Calculate the average score for each team, using the test data below
+2. Compare the team's average scores to determine the winner of the competition,
+and print it to the console. Don't forget that there can be a draw, so test for that
+as well (draw means they have the same average score)
+3. Bonus 1: Include a requirement for a minimum score of 100. With this rule, a
+team only wins if it has a higher score than the other team, and the same time a
+score of at least 100 points. Hint: Use a logical operator to test for minimum
+score, as well as multiple else-if blocks 😉
+4. Bonus 2: Minimum score also applies to a draw! So a draw only happens when
+both teams have the same score and both have a score greater or equal 100
+points. Otherwise, no team wins the trophy
+Test data:
+§ Data 1: Dolphins score 96, 108 and 89. Koalas score 88, 91 and 110
+§ Data Bonus 1: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 123
+§ Data Bonus 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106 */
+
+const dolphinsOne = [96, 108, 89];
+const koalasOne = [88, 91, 110];
+
+const dolphinsTwo = [97, 112, 101];
+const koalasTwo = [109, 95, 123];
+
+const dolphinsThree = [97, 112, 101];
+const koalasThree = [109, 95, 106];
+
+let denominator;
+let numerator;
+
+function winnerTeam(dolphins, koalas) {
+  dolphAvg = averageScore(dolphins);
+  koalaAvg = averageScore(koalas);
+
+  if (dolphAvg < 100 && koalaAvg < 100) {
+    console.log(
+      `Both teams have less points than 100 (${dolphAvg}, ${koalaAvg}), no one wins the trophy!`
+    );
+    return 0;
+  }
+
+  const dolphVic = dolphAvg > koalaAvg;
+  const koalaVic = koalaAvg > dolphAvg;
+  const draw = dolphAvg === koalaAvg;
+
+  if (dolphVic) {
+    console.log(`The Dolphins (${dolphAvg}) get the trophy!`);
+  } else if (koalaVic) {
+    console.log(`The Koalas (${koalaAvg}) get the trophy!`);
+  } else if (draw) {
+    console.log(
+      `Both teams have a higher score than 100 (${dolphAvg}, ${koalaAvg}), and the scores are equal, both teams wins the trophy!`
+    );
+  }
+}
+
+function totalScore(team) {
+  let score = 0;
+  for (let i = 0; i < team.length; i++) {
+    score = score + team[i];
+  }
+  return score;
+}
+
+function averageScore(team) {
+  numerator = totalScore(team);
+  denominator = team.length;
+  teamAvg = numerator / denominator;
+  return teamAvg;
+}
+
+winnerTeam(dolphinsOne, koalasOne);
+winnerTeam(dolphinsTwo, koalasTwo);
+winnerTeam(dolphinsThree, koalasThree);
