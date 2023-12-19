@@ -440,7 +440,7 @@ console.log(`I'am ${2037 - 1991} years old ${me}`);
 /* const age = 23;
 age >= 18
   ? console.log("I like to drink wine")
-  : console.log("I like to dtink water");
+  : console.log("I like to drink water");
 
 const drink = age >= 18 ? "wine" : "water";
 console.log(drink);
@@ -473,3 +473,24 @@ Test data:
 Hints:
 § To calculate 20% of a value, simply multiply it by 20/100 = 0.2
 § Value X is between 50 and 300, if it's >= 50 && <= 300 😉 */
+
+let tip;
+let bill;
+
+function calculateTip (bill) { 
+  tip = (bill >= 50 && bill <= 300) ? bill * 0.15 : bill * 0.2
+  return tip;
+};
+
+billOne = 275;
+billTwo = 40;
+billThree = 430;
+
+const caclTip1 = calculateTip(billOne);
+const caclTip2 = calculateTip(billTwo);
+const caclTip3 = calculateTip(billThree);
+
+
+console.log(`The bill was ${billOne}, the tip was ${caclTip1}, and the total value ${billOne + caclTip1}`);
+console.log(`The bill was ${billTwo}, the tip was ${caclTip2}, and the total value ${billTwo + caclTip2}`);
+console.log(`The bill was ${billThree}, the tip was ${caclTip3}, and the total value ${billThree + caclTip3}`);
