@@ -477,10 +477,10 @@ Hints:
 let tip;
 let bill;
 
-function calculateTip (bill) { 
-  tip = (bill >= 50 && bill <= 300) ? bill * 0.15 : bill * 0.2
+function calculateTip(bill) {
+  tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
   return tip;
-};
+}
 
 billOne = 275;
 billTwo = 40;
