@@ -52,7 +52,7 @@ console.log(age1, age2);
 
 // lecture 32: Arrow Functions
 
-const calcAge2 = function (birthYear){
+/* const calcAge2 = function (birthYear){
     return 2037 - birthYear;
 }
 
@@ -69,3 +69,20 @@ const yearsUntilRetirement = (birthYear, firstName) => {
 
 console.log(yearsUntilRetirement(1991, 'Jonas'));
 console.log(yearsUntilRetirement(1980, 'Bob'));
+ */
+
+//lecture 33: functions calling other funtions
+
+function cutFruitPieces(fruit){
+    return fruit * 4;
+}
+
+function fruitProcessor(apples, oranges) {
+const applePieces = cutFruitPieces(apples);
+const orangePieces = cutFruitPieces(oranges);
+
+const juice = `Juice with ${applePieces} apples and ${orangePieces} oranges.`;
+return juice;
+}
+
+console.log(fruitProcessor(2, 3));
