@@ -267,7 +267,7 @@ Hint: Remember that an array needs a value in each position, and that value can 
   store the tip values in separate variables first, but right in the new array) 😉
  */
 
-function calcTip(bill) {
+/* function calcTip(bill) {
   let tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
   return tip;
 }
@@ -287,3 +287,4 @@ function storeTips(billsArray, tipsArray, totalArray){
 storeTips(bills, tips, total);
 
 console.log(`The bills array is ${bills}, the tips array is ${tips}, and the total array is ${total}`);
+ */

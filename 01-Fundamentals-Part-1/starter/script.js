@@ -486,11 +486,11 @@ billOne = 275;
 billTwo = 40;
 billThree = 430;
 
-const caclTip1 = calculateTip(billOne);
-const caclTip2 = calculateTip(billTwo);
-const caclTip3 = calculateTip(billThree);
+const calcTip1 = calculateTip(billOne);
+const calcTip2 = calculateTip(billTwo);
+const calcTip3 = calculateTip(billThree);
 
 
-console.log(`The bill was ${billOne}, the tip was ${caclTip1}, and the total value ${billOne + caclTip1}`);
-console.log(`The bill was ${billTwo}, the tip was ${caclTip2}, and the total value ${billTwo + caclTip2}`);
-console.log(`The bill was ${billThree}, the tip was ${caclTip3}, and the total value ${billThree + caclTip3}`);
+console.log(`The bill was ${billOne}, the tip was ${calcTip1}, and the total value ${billOne + calcTip1}`);
+console.log(`The bill was ${billTwo}, the tip was ${calcTip2}, and the total value ${billTwo + calcTip2}`);
+console.log(`The bill was ${billThree}, the tip was ${calcTip3}, and the total value ${billThree + calcTip3}`);
