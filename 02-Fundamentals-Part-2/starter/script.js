@@ -302,7 +302,7 @@ const jonas = {
  */
 
 // Dot vs Bracket Notation | JavaScript 🔥 | Lecture 040
-
+/* 
 const jonas = {
     firstName: 'Jonas',
     lastName: 'Schmedtmann',
@@ -337,3 +337,45 @@ console.log(jonas);
 // Challenge
 // Jonas has 3 friends and his best friend is called Michael.
 console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+ */
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    birthYeah: 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven'],
+    hasDriversLicense: true,
+  
+    // calcAge: function (birthYeah) {
+    //   return 2037 - birthYeah;
+    // }
+  
+    // calcAge: function () {
+    //   // console.log(this);
+    //   return 2037 - this.birthYeah;
+    // }
+  
+    calcAge: function () {
+      this.age = 2037 - this.birthYeah;
+      return this.age;
+    },
+  };
+  
+  console.log(jonas.calcAge());
+  
+  console.log(jonas.age);
+  console.log(jonas.age);
+  console.log(jonas.age);
+  
+// Challenge
+// "Jonas is a 46 years old teacher, and he has a drivers license"
+function hasDriversLicence (){
+    if(jonas.hasDriversLicense){
+        return "has a drivers license.";
+    } else return "has no drivers license.";
+}
+console.log(`${jonas.firstName} is a ${jonas.calcAge()} years old ${jonas.job}, and he ${hasDriversLicence()}`);
+// better solution
+//  getSummary: function () {
+//    return `${this.firstName} is a ${this.calcAge()}-year old ${jonas.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license.`
+//  }
