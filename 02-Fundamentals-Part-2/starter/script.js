@@ -337,7 +337,7 @@ console.log(jonas);
 // Challenge
 // Jonas has 3 friends and his best friend is called Michael.
 console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
- */
+ *//* 
 const jonas = {
     firstName: 'Jonas',
     lastName: 'Schmedtmann',
@@ -379,3 +379,57 @@ console.log(`${jonas.firstName} is a ${jonas.calcAge()} years old ${jonas.job}, 
 //  getSummary: function () {
 //    return `${this.firstName} is a ${this.calcAge()}-year old ${jonas.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license.`
 //  }
+ */
+// Coding Challenge #7 | JavaScript 🔥 | Lecture 042
+/*
+Let's go back to Mark and John comparing their BMIs! 
+This time, let's use objects to implement the calculations!
+ Remember: 
+ BMI = mass / height ** 2 = mass / (height * height) (mass in kg and height in meter)
+
+Your tasks:
+1. For each of them, create an object with properties for their full name,
+ mass, and height (Mark Miller and John Smith)
+2. Create a 'calcBMI' method on each object to calculate the BMI (the same
+method on both objects). Store the BMI value to a property, and also return it
+from the method
+3. Log to the console who has the higher BMI, together with the 
+full name and the respective BMI. Example: "John's BMI (28.3) is higher 
+than Mark's (23.9)!"
+
+Test data: Marks weights 78 kg and is 1.69 m tall. 
+John weights 92 kg and is 1.95 m tall. 
+ */
+
+mark = {
+    fullName: 'Mark Miller',
+    mass: 78,
+    height: 1.69,
+};
+
+john = {
+    fullName: 'John Smith',
+    mass: 92,
+    height: 1.95,
+};
+
+function calcBMI(mass, height, object) {
+    const BMI = mass / height ** 2;
+    object.BMI =  BMI;
+    return BMI;
+}
+
+function compareBMI(){
+    highestBMI = {
+        BMI: 0,
+        fullName: '',
+    };
+    for (let i = 0; i < compareBMI.length; i++) {
+        const objectToCompare = compareBMI[i];
+        objectBMI = calcBMI(objectToCompare.mass ,objectToCompare.height, objectToCompare)
+       if(highestBMI.BMI < objectBMI){
+        highestBMI.BMI = objectBMI;
+        highestBMI.fullName = objectToCompare.fullName
+       }
+    }
+}
