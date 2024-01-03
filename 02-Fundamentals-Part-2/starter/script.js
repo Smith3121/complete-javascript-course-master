@@ -413,23 +413,34 @@ john = {
     height: 1.95,
 };
 
+
+
 function calcBMI(mass, height, object) {
     const BMI = mass / height ** 2;
     object.BMI =  BMI;
     return BMI;
 }
 
-function compareBMI(){
+
+
+function compareBMI(...people){
     highestBMI = {
         BMI: 0,
         fullName: '',
     };
-    for (let i = 0; i < compareBMI.length; i++) {
-        const objectToCompare = compareBMI[i];
-        objectBMI = calcBMI(objectToCompare.mass ,objectToCompare.height, objectToCompare)
+    bmiAndNameArray = [];
+
+    for (let i = 0; i < people.length; i++) {
+        const objectToCompare = people[i];
+        objectBMI = calcBMI(objectToCompare.mass ,objectToCompare.height, objectToCompare);
        if(highestBMI.BMI < objectBMI){
         highestBMI.BMI = objectBMI;
-        highestBMI.fullName = objectToCompare.fullName
+        highestBMI.fullName = objectToCompare.fullName;
        }
+       arrayElement = ` ${objectToCompare.fullName} (${objectBMI.toFixed(2)})`;
+       bmiAndNameArray.push(arrayElement);
     }
+    console.log(`From the list of ${bmiAndNameArray}, ${highestBMI.fullName} (${highestBMI.BMI.toFixed(2)}) has the highest BMI.`);
 }
+
+compareBMI(mark, john);
