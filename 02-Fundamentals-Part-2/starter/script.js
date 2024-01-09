@@ -443,7 +443,7 @@ function compareBMI(...people){
 }
 
 compareBMI(mark, john);
- */
+
 
 // Iteration The for Loop | JavaScript 🔥 | Lecture 043
 // console.log('Lifting weights repetition 1');
@@ -460,4 +460,56 @@ compareBMI(mark, john);
 // for loop keeps running while condition is TRUE
 for (let rep = 1; rep <= 10; rep++) {
   console.log(`Lifting weights repetition ${rep}`);
+}
+*/
+// Looping Arrays, Breaking and Continuing | JavaScript 🔥 | Lecture 044
+const jonas = [
+  'Jonas',
+  'Schmedtmann',
+  2037 - 1991,
+  'teacher',
+  ['Michael', 'Peter', 'Steven'],
+  true,
+];
+
+const types = [];
+
+// console.log(jonas[0]);
+// console.log(jonas[1]);
+// ...
+// console.log(jonas[4]);
+// jonas[5] does NOT exist
+
+for (let i = 0; i < jonas.length; i++) {
+  // Reading from jonas array
+  console.log(jonas[i], typeof jonas[i]);
+
+  // Filling tpyes array
+  //   types[i] = typeof jonas[i];
+  types.push(typeof jonas[i]);
+}
+
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2037 - years[i]);
+}
+console.log(ages);
+
+// continue and break
+console.log('--- ONLY STRINGS ---');
+for (let i = 0; i < jonas.length; i++) {
+  if (typeof jonas[i] !== 'string') continue;
+
+  console.log(jonas[i], typeof jonas[i]);
+}
+
+console.log('--- BREAK WITH NUMBER ---');
+for (let i = 0; i < jonas.length; i++) {
+  if (typeof jonas[i] === 'number') break;
+
+  console.log(jonas[i], typeof jonas[i]);
 }
