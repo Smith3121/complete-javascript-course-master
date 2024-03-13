@@ -407,3 +407,6 @@ const printGoals = function (...players) {
 
 printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
 printGoals('game.scored call: ', ...game.scored);
+
+team1 < team2 && console.log('Bayern Munich is more likely to win');
+team1 > team2 && console.log('Borrussia Dortmund is more likely to win');
