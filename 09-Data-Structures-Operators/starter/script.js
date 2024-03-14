@@ -372,15 +372,22 @@ const game = {
 const [bayernTeam, dortmundTeam] = game.players;
 console.log('players: ', game.players);
 
+// Better solution
+// const [players1, players2] = game.players;
+// console.log(players1, players2);
+
 console.log('bayernTeam', bayernTeam);
+
+// Better solution
+// const [gk, ...fieldPlayers] = players1;
+// console.log(gk, fieldPlayers);
 
 const players1 = [bayernTeam];
 console.log('players1: ', players1);
 
-const gk = bayernTeam[0];
+const [gk, ...fieldPlayers] = bayernTeam;
 console.log('goalKeeper: ', gk);
 
-const fieldPlayers = [];
 const allPlayers = [...bayernTeam, ...dortmundTeam];
 console.log('allPlayers', allPlayers);
 
@@ -393,6 +400,11 @@ console.log('dortmundTeam: ', dortmundTeam);
 const team1 = game.odds.team1;
 const draw = game.odds.x;
 const team2 = game.odds.team2;
+// Better solution
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
+// console.log(team1, draw, team2);
 
 console.log('Odds of team1, draw, team2: ', team1, draw, team2);
 
@@ -404,6 +416,12 @@ const printGoals = function (...players) {
   }
   console.log(sum);
 };
+
+// Better solution
+// const printGoals = function (...players) {
+//   console.log(players);
+//   console.log(`${players.length} goals were scored`);
+// };
 
 printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
 printGoals('game.scored call: ', ...game.scored);
