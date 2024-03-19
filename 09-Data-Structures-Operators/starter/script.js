@@ -1,5 +1,5 @@
 'use strict';
-/*
+
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -51,6 +51,25 @@ const restaurant = {
   },
 };
 
+//////////////////////////////
+// Looping Arrays_ The for-of Loop | JavaScript 🔥 | Lecture 103
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+// Old school way
+// for (const item of menu.entries()) {
+//   console.log(`${item[0] + 1}: ${item[1]}`);
+// }
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+// console.log(...menu.entries());
+
+/*
 const rest1 = {
   name: 'Capri',
   numGuests: 20,
@@ -328,6 +347,7 @@ console.log(p, q, r);
 // Then, call the function again with players from game.scored
 // GOOD LUCK 😀
 
+/*
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -428,3 +448,4 @@ printGoals('game.scored call: ', ...game.scored);
 
 team1 < team2 && console.log('Bayern Munich is more likely to win');
 team1 > team2 && console.log('Borrussia Dortmund is more likely to win');
+*/
