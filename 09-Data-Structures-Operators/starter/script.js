@@ -58,7 +58,7 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
-
+/*
 ///////////////////////////////////
 // Optional Chaining (_.) | JavaScript 🔥 | Lecture 105
 
@@ -90,6 +90,32 @@ console.log(users[0]?.name ?? 'User array empty');
 // without optional chaining
 // if (users.length > 0) console.log(users[0].name);
 // else console.log('user array empty');
+*/
+///////////////////////////////////////////////////
+// Looping Objects_ Object Keys, Values, and Entries | JavaScript 🔥 | Lecture 106
+
+// property NAMES
+const properties = Object.keys(openingHours);
+console.log('Properties: ', properties);
+
+let openStr = `We are open on ${properties.length} days: `;
+
+for (const day of Object.keys(openingHours)) {
+  console.log(day);
+}
+
+// Property VALUES
+const values = Object.values(openingHours);
+console.log('Values: ', values);
+
+// Entire object
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+// [key, value]
+for (const [day, { open, close }] of entries) {
+  console.log(`On ${day} we open at ${open} and close at ${close}`);
+}
 
 /*
 //////////////////////////////
