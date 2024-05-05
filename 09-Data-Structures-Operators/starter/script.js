@@ -521,6 +521,7 @@ team1 < team2 && console.log('Bayern Munich is more likely to win');
 team1 > team2 && console.log('Borrussia Dortmund is more likely to win');
 */
 
+/*
 // LECTURE: 107
 
 // Coding Challenge #12 | JavaScript 🔥 | Lecture 107
@@ -622,7 +623,7 @@ console.log(
 const scorers = {};
 
 // 4.
-for (let player of game.scored) {
+for (const player of game.scored) {
   if (scorers[player]) {
     scorers[player]++;
   } else {
@@ -635,3 +636,41 @@ console.log(scorers);
 // for (const player of game.scored) {
 //   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
 // }
+*/
+///////////////////////////////////////////////////////
+// Sets | JavaScript 🔥 | Lecture 108
+
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+
+console.log(ordersSet);
+
+console.log(new Set('Jonas'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+// Example
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(
+  new Set('Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter').size
+);
+
+console.log(new Set('jonasschmedtmann').size);
