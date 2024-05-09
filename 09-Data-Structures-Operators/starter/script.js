@@ -824,7 +824,9 @@ for (const [min, event] of gameEvents) {
 // Working With Strings - Part 1 | JavaScript 🔥 | Lecture 113
 
 const airline = 'TAP Air Portugal';
-const plane = 'A320';
+// const plane = 'A320';
+
+/*
 
 console.log(plane[0]);
 console.log(plane[1]);
@@ -862,3 +864,65 @@ console.log(new String('Jonas'));
 console.log(typeof new String('Jonas'));
 
 console.log(typeof new String('Jonas').slice(1));
+*/
+
+/////////////////////////////////////////
+// Working With Strings - Part 2 | JavaScript 🔥 | Lecture 114
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// Fix capitalization in name
+const passenger = 'jOnAS'; // Jonas
+const pasSengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  pasSengerLower[0].toUpperCase() + pasSengerLower.slice(1);
+console.log(passengerCorrect);
+
+// Comparing email
+const email = 'hello@jonas.io';
+const loginEmail = '  Hello@Jonas.Io \n';
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// replacing
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+
+console.log(announcement.replace('door', 'gate'));
+console.log(announcement.replaceAll('door', 'gate'));
+console.log(announcement.replace(/door/g, 'gate'));
+
+// Booleans
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boeing'));
+console.log(plane.includes('Airbus'));
+
+if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log('Part of the new Airbus family');
+}
+
+// Practice
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are not allowed on board');
+  } else {
+    console.log('Welcome on board');
+  }
+};
+
+checkBaggage('I have a laptop, some food and a pocket Knife');
+checkBaggage('I have some socks and camera');
+checkBaggage('Got some snacks and a gun for protection');
