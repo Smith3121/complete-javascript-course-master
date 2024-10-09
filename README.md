@@ -1,1 +1,1 @@
-I follow the YouTube channel 'The Coding Classroom,' which has a playlist called 'The Complete JavaScript Course 2023.' I watch the videos, write the code as the instructor does it, and pause the videos where I should solve problems myself.
+Jonas Schmedtmann: 'The Complete JavaScript Course 2023: From Zero to Expert!'
