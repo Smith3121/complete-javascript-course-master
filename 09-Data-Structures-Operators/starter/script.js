@@ -1019,3 +1019,33 @@ Afterwards, test with your own test data!
 
 GOOD LUCK 😀
 */
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const noNewLineArray = text.split(/\s+/);
+
+  const camelCaseNames = [];
+  let maxLength = 0;
+  for (let i = 0; i < noNewLineArray.length; i++) {
+    const variableName = noNewLineArray[i].toLowerCase();
+    const words = variableName.split('_');
+    const camelCaseName =
+      words[0] + words[1].charAt(0).toUpperCase() + words[1].slice(1);
+    camelCaseNames.push(camelCaseName);
+    if (maxLength > camelCaseName.length) {
+      maxLength = maxLength;
+    } else {
+      maxLength = camelCaseName.length;
+    }
+  }
+
+  for (let i = 0; i < camelCaseNames.length; i++) {
+    const camelCaseName = camelCaseNames[i];
+    const checkmarks = '✅'.repeat(i + 1);
+    const paddedCamelCaseName = camelCaseName.padEnd(maxLength + 2);
+    console.log(paddedCamelCaseName, checkmarks);
+  }
+});
