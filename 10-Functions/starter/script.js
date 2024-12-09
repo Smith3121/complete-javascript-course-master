@@ -283,21 +283,34 @@ poll.registerNewAnswer = function () {
 
   const userChoice = prompt(promptMessage);
 
+  if (userChoice === null) {
+    console.log('User canceled the prompt.');
+    return;
+  }
+
   const choiceNumber = parseInt(userChoice);
 
   // Check if the input is a valid number within the options
-  if (!isNaN(choiceNumber) && choiceNumber >= 0 && choiceNumber <= 3) {
+  if (
+    !isNaN(choiceNumber) &&
+    choiceNumber >= 0 &&
+    choiceNumber <= poll.options.length
+  ) {
     poll.answers[choiceNumber]++;
   } else {
-    console.log('Invalid input. Please enter a number between 0 and 3.');
+    console.log(
+      `Invalid input. Please enter a number between 0 and ${
+        poll.options.length - 1
+      }.`
+    );
   }
   displayResults('array');
 };
 
-const displayResults = function (type) {
-  if (type === 'string') {
+const displayResults = function (type = 'array') {
+  if (type === 'array') {
     console.log(poll.answers);
-  } else if (type === 'array') {
+  } else if (type === 'string') {
     console.log(
       `Poll results are , ${poll.answers[0]}, ${poll.answers[1]}, ${poll.answers[2]}, ${poll.answers[3]}`
     );
