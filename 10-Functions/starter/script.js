@@ -270,53 +270,56 @@ GOOD LUCK 😀
 */
 
 const poll = {
-  question: 'What is your favourite programming language?',
+  question: 'What is your favorite programming language?',
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  // This generates [0, 0, 0, 0]. More in the next section 😃
   answers: new Array(4).fill(0),
-};
 
-poll.registerNewAnswer = function () {
-  const promptMessage = `${poll.question}\n${poll.options.join(
-    '\n'
-  )}\n(Write option number):`;
+  registerNewAnswer() {
+    const promptMessage = `${this.question}\n${this.options.join(
+      '\n'
+    )}\n(Write option number):`;
+    const userChoice = prompt(promptMessage);
 
-  const userChoice = prompt(promptMessage);
+    if (userChoice === null) {
+      console.log('User canceled the prompt.');
+      return;
+    }
 
-  if (userChoice === null) {
-    console.log('User canceled the prompt.');
-    return;
-  }
+    const choiceNumber = parseInt(userChoice);
 
-  const choiceNumber = parseInt(userChoice);
+    if (
+      !isNaN(choiceNumber) &&
+      choiceNumber >= 0 &&
+      choiceNumber <= this.options.length
+    ) {
+      this.answers[choiceNumber]++;
+    } else {
+      console.log(
+        `Invalid input. Please enter a number between 0 and ${
+          this.options.length - 1
+        }.`
+      );
+    }
 
-  // Check if the input is a valid number within the options
-  if (
-    !isNaN(choiceNumber) &&
-    choiceNumber >= 0 &&
-    choiceNumber <= poll.options.length
-  ) {
-    poll.answers[choiceNumber]++;
-  } else {
-    console.log(
-      `Invalid input. Please enter a number between 0 and ${
-        poll.options.length - 1
-      }.`
-    );
-  }
-  displayResults('array');
-};
+    this.displayResults();
+    this.displayResults('string');
+  },
 
-const displayResults = function (type = 'array') {
-  if (type === 'array') {
-    console.log(poll.answers);
-  } else if (type === 'string') {
-    console.log(
-      `Poll results are , ${poll.answers[0]}, ${poll.answers[1]}, ${poll.answers[2]}, ${poll.answers[3]}`
-    );
-  }
+  displayResults(type = 'array') {
+    if (type === 'array') {
+      console.log(this.answers);
+    } else if (type === 'string') {
+      console.log(`Poll results are: ${this.answers.join(', ')}`);
+    }
+  },
 };
 
 document
   .querySelector('.poll')
   .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+const testData1 = [5, 2, 3];
+const testData2 = [1, 5, 3, 9, 6, 1];
+
+poll.displayResults.call({ answers: testData1 }, 'string');
+poll.displayResults.call({ answers: testData2 });
