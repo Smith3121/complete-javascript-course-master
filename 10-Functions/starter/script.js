@@ -350,3 +350,25 @@ runOnce();
 //console.log(isPrivate);
 console.log(notPrivate);
 */
+
+// 142. CLosures
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+// secureBooking();
+// secureBooking();
+// secureBooking();
+
+console.dir(booker);
