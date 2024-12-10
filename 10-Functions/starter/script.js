@@ -269,6 +269,7 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 GOOD LUCK 😀
 */
 
+/*
 const poll = {
   question: 'What is your favorite programming language?',
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
@@ -323,3 +324,29 @@ const testData2 = [1, 5, 3, 9, 6, 1];
 
 poll.displayResults.call({ answers: testData1 }, 'string');
 poll.displayResults.call({ answers: testData2 });
+*/
+
+// 141. Immediately Invoked Function Expressions.
+/*
+const runOnce = function () {
+  console.log('This will never run again');
+};
+runOnce();
+
+(function () {
+  console.log('This will never run again');
+  const isPrivate = 23;
+})();
+
+// console.log(isPrivate);
+
+(() => console.log('This will ALSO never run again'))();
+
+{
+  const isPrivate = 23;
+  var notPrivate = 46;
+}
+
+//console.log(isPrivate);
+console.log(notPrivate);
+*/
