@@ -444,6 +444,8 @@ and what that means for the variables involved in this example.
 GOOD LUCK 😀
 */
 
+/*
+
 (function () {
   const header = document.querySelector('h1');
   header.style.color = 'red';
@@ -452,3 +454,5 @@ GOOD LUCK 😀
     header.style.color = 'blue';
   });
 })();
+
+*/
