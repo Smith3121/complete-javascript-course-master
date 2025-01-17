@@ -80,7 +80,20 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
+
 displayMovements(account1.movements);
+
+const createUserNames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+createUserNames(accounts);
+console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -259,6 +272,7 @@ checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
 // 154. Data Transformations: map, filter, reduce
 
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
 const movementUSD = movements.map(function (mov) {
@@ -281,3 +295,6 @@ const movementsDescriptions = movements.map(
     )}`
 );
 console.log(movementsDescriptions);
+*/
+
+// 156. Computing Usernames
