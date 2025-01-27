@@ -555,3 +555,19 @@ for (const account of accounts) {
 
 console.log(foundAccount);
 */
+
+console.log(movements);
+const lastWithdrawal = movements.findLast(mov => mov < 0);
+console.log(lastWithdrawal);
+
+// 'Your latest large movements was X movements ago'
+
+const latestLargeMovementIndex = movements.findLastIndex(
+  mov => Math.abs(mov) > 1000
+);
+console.log(latestLargeMovementIndex);
+console.log(
+  `Your latest large movements was ${
+    movements.length - latestLargeMovementIndex
+  } movement(s) ago`
+);
