@@ -157,6 +157,10 @@ btnLogin.addEventListener('click', function (e) {
   }
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+});
+
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Number(inputTransferAmount.value);
@@ -177,6 +181,21 @@ btnTransfer.addEventListener('click', function (e) {
 
     updateUI(currentAccount);
   }
+});
+
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // Add movement
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
 });
 
 btnClose.addEventListener('click', function (e) {
@@ -556,18 +575,37 @@ for (const account of accounts) {
 console.log(foundAccount);
 */
 
+// console.log(movements);
+// const lastWithdrawal = movements.findLast(mov => mov < 0);
+// console.log(lastWithdrawal);
+
+// // 'Your latest large movements was X movements ago'
+
+// const latestLargeMovementIndex = movements.findLastIndex(
+//   mov => Math.abs(mov) > 1000
+// );
+// console.log(latestLargeMovementIndex);
+// console.log(
+//   `Your latest large movements was ${
+//     movements.length - latestLargeMovementIndex
+//   } movement(s) ago`
+// );
+
 console.log(movements);
-const lastWithdrawal = movements.findLast(mov => mov < 0);
-console.log(lastWithdrawal);
+console.log(movements.includes(-130));
 
-// 'Your latest large movements was X movements ago'
+// SOME: CONDITION
+console.log(movements.some(mov => mov === -130));
 
-const latestLargeMovementIndex = movements.findLastIndex(
-  mov => Math.abs(mov) > 1000
-);
-console.log(latestLargeMovementIndex);
-console.log(
-  `Your latest large movements was ${
-    movements.length - latestLargeMovementIndex
-  } movement(s) ago`
-);
+const anyDeposits = movements.some(mov => mov > 0);
+console.log(anyDeposits);
+
+// EVERY
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
