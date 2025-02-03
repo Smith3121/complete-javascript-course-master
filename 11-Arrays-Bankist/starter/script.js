@@ -824,6 +824,7 @@ const groupedAccounts = Object.groupBy(accounts, ({ type }) => type);
 console.log(groupedAccounts);
 */
 
+/*
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 console.log([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 console.log(new Array(1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -855,3 +856,19 @@ labelBalance.addEventListener('click', function () {
 
   const movementsUI2 = [...document.querySelectorAll('.movements__value')];
 });
+*/
+
+// 173. Non-Destructive Alternatives: toReversed, toSorted, toSpliced, with
+
+console.log(movements);
+const reverseMov = movements.toReversed();
+console.log(reverseMov);
+console.log(movements);
+
+// toSorted (sort), toSpliced (splice)
+
+//movements[1] = 2000;
+const newMovements = movements.with(1, 2000);
+console.log(newMovements);
+
+console.log(movements);
