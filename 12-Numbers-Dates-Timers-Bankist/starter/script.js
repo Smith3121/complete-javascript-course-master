@@ -360,6 +360,7 @@ labelBalance.addEventListener('click', function () {
 });
 */
 
+/*
 // 182. Numeric Separators
 
 // 287,460,000,000
@@ -377,3 +378,38 @@ console.log(PI);
 
 console.log(Number('230_000'));
 console.log(parseInt('230_000'));
+*/
+
+// 183. Working with BigInt
+
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53);
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 3);
+console.log(2 ** 53 + 4);
+
+console.log(6897465454348676487324652344562344532876726945451n);
+console.log(BigInt(32876726945451));
+//console.log(Math.sqrt(16n));
+
+// Operations
+console.log(10000n + 10000n);
+console.log(234555663214656774653256345754564734657n * 1000000n);
+
+const huge = 20155554592345365676999436774n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+// Exceptions
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == '20');
+
+console.log(huge + ' is Really big!!!');
+
+// Division
+console.log(11n / 3n);
+console.log(10 / 3);
