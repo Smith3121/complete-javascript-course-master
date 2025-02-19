@@ -288,14 +288,16 @@ btnLoan.addEventListener('click', function (e) {
   const amount = Math.floor(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    // Add load date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add load date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 2500);
   }
   inputLoanAmount.value = '';
 });
@@ -551,6 +553,7 @@ console.log(future);
 
 // console.log(days1);
 
+/*
 // 189. Internationalizing Numbers (Intl)
 
 const num = 38884357.23;
@@ -572,3 +575,22 @@ console.log(
   navigator.language,
   new Intl.NumberFormat(navigator.language, options).format(num)
 );
+*/
+
+// 190. Timers: setTimeout and setInterval
+
+// SetTimeout
+const ingredienst = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(` with ${ing1} and ${ing2}`),
+  3000,
+  ...ingredienst
+);
+console.log('Waiting...');
+if (ingredienst.includes('spinach')) clearTimeout(pizzaTimer);
+
+// SetInterval
+setInterval(function () {
+  const now = new Date();
+  console.log(now);
+}, 1000);
