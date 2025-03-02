@@ -1,12 +1,14 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
-
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+
+///////////////////////////////////////
+// Modal window
 
 const openModal = function (e) {
   e.preventDefault();
@@ -30,7 +32,66 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+///////////////////////////////////////
+// Button Scrolling
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log('Current scroll (X/Y)', window.scrollX, scrollY);
+
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+});
+//   Scrolling;
+//   window.scrollTo(
+//     s1coords.left + window.scrollX,
+//     s1coords.top + window.scrollY
+//   );
+
+//   window.scrollTo({
+//     left: s1coords.left + window.scrollX,
+//     top: s1coords.top + window.scrollY,
+//     behavior: 'smooth',
+//   });
+
+section1.scrollIntoView({ behavior: 'smooth' });
+// });
+
+// Page navigation
+
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // Matching strategy
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
 /*
+// Selecting, Creating and Deleting Elements
+
+// Selecting elements
+
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
@@ -173,6 +234,7 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 // };
 */
 
+/*
 // 201. Event Propagation in Practice
 
 // rgb (255, 255, 255)
@@ -200,3 +262,4 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
   console.log('NAV', e.target, e.currentTarget);
 });
+*/
