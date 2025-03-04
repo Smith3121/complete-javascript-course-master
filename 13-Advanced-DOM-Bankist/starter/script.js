@@ -129,6 +129,15 @@ nav.addEventListener('mouseover', handleHover.bind(0.5));
 
 nav.addEventListener('mouseout', handleHover.bind(1));
 
+// Sticky navigation
+const initialCords = section1.getBoundingClientRect();
+window.addEventListener('scroll', function (e) {
+  console.log(window.scrollY);
+
+  if (this.window.scrollY > initialCords.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
+
 // tabs.forEach(t => t.addEventListener('click', () => console.log('TAB')));
 /*
 // Selecting, Creating and Deleting Elements
