@@ -117,39 +117,45 @@ toyota.brake();
 toyota.accelerate();
 */
 
-
 // class expression
 // const PersonCl = class {}
 
 // class declaration
 class PersonCl {
-    constructor(fullName, birthYear) {
-        this.fullName = fullName;
-        this.birthYear = birthYear;
-    }
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
 
-    // Methods will be added to .prototype property
-    calcAge() {
-        console.log(2037 - this.birthYear);
-    }
+  // Instance methods
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
 
-    greet() {
-        console.log(`Hey ${this.fullName}`);
-    }
+  greet() {
+    console.log(`Hey ${this.fullName}`);
+  }
 
-    get age() {
-        return 2037 - this.birthYear;
-    }
+  get age() {
+    return 2037 - this.birthYear;
+  }
 
-    // Set a property that already exists
-    set fullName(name) {
-        if (name.includes(' ')) this._fullName = name;
-        else alert(`${name} is not a full name!`);
-    }
+  // Set a property that already exists
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
 
-    get fullName() {
-        return this._fullName;
-    }
+  get fullName() {
+    return this._fullName;
+  }
+
+  // Static method
+  static hey() {
+    console.log('Hey there 👋');
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -164,7 +170,6 @@ console.log(jessica.__proto__ === PersonCl.prototype);
 // }
 jessica.greet();
 
-
 // 1. Classes are NOT hoisted
 // 2. Classes are first-class citizens
 // 3. Classes are executed in strict mode
@@ -172,19 +177,38 @@ jessica.greet();
 const walter = new PersonCl('Walter White', 1965);
 
 const account = {
-    owner: 'Jonas',
-    movements: [200, 530, 120, 300],
+  owner: 'Jonas',
+  movements: [200, 530, 120, 300],
 
-    get latest() {
-        return this.movements.slice(-1).pop();
-    },
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
 
-    set latest(mov) {
-        this.movements.push(mov);
-    }
+  set latest(mov) {
+    this.movements.push(mov);
+  },
 };
 
 console.log(account.latest);
 
 account.latest = 50;
 console.log(account.movements);
+
+// // Staticmethods not available on instances but only on the class itself
+// class Example {
+//   static staticMethod() {
+//     return 'I am a static method!';
+//   }
+
+//   instanceMethod() {
+//     return 'I am an instance method!';
+//   }
+// }
+
+// const obj = new Example();
+
+// console.log(Example.staticMethod()); // ✅ Works: "I am a static method!"
+// console.log(obj.instanceMethod()); // ✅ Works: "I am an instance method!"
+// console.log(obj.staticMethod()); // ❌ Error: obj.staticMethod is not a function
+// console.log(Example.instanceMethod()); // ❌ Error: Example.instanceMethod is not a function
+PersonCl.hey();
