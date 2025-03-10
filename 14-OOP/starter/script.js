@@ -176,6 +176,9 @@ jessica.greet();
 
 const walter = new PersonCl('Walter White', 1965);
 
+//PersonCl.hey();
+
+/*
 const account = {
   owner: 'Jonas',
   movements: [200, 530, 120, 300],
@@ -193,6 +196,7 @@ console.log(account.latest);
 
 account.latest = 50;
 console.log(account.movements);
+*/
 
 // // Staticmethods not available on instances but only on the class itself
 // class Example {
@@ -212,3 +216,26 @@ console.log(account.movements);
 // console.log(obj.staticMethod()); // ❌ Error: obj.staticMethod is not a function
 // console.log(Example.instanceMethod()); // ❌ Error: Example.instanceMethod is not a function
 PersonCl.hey();
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+console.log(steven);
+steven.name = 'Steven';
+steven.birthYear = 2002;
+steven.calcAge();
+
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1979);
+sarah.calcAge();
