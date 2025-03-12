@@ -136,7 +136,6 @@ class PersonCl {
 
   greet() {
     console.log(`Hey ${this.fullName}`);
-    }
   }
 
   get age() {
@@ -498,32 +497,49 @@ jay.introduce();
 jay.calcAge();
 */
 
+// Encapsulation: Protected Properties and Methods
+
+// 1) Public fields
+// 2) Private fields
+// 3) Public methods
+// 4) Private methods
+// (There is also the static version)
+
 class Account {
+  locale = navigator.language;
+  bank = 'Bankist';
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
-    this.movements = [];
-    this.locale = navigator.language;
+    this.#pin = pin;
+    // this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
 
-  // Public interface
+  // Public interface (API)
+  getMovements() {
+    return this.#movements;
+  }
+
   deposit(val) {
-    this.movements.push(val);
+    this.#movements.push(val);
   }
 
   withdraw(val) {
     this.deposit(-val);
   }
 
-  approveLoan(val) {
+  #approveLoan(val) {
+    // Fake method
     return true;
   }
 
   requestLoan(val) {
-    if (this.approveLoan(val)) {
+    if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log('Loan approved');
     }
@@ -539,4 +555,6 @@ acc1.withdraw(140);
 acc1.requestLoan(1000);
 
 console.log(acc1);
-console.log(acc1.pin);
+// console.log(acc1.#movements);
+
+// Account.test();
