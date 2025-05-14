@@ -257,35 +257,113 @@ TEST COORDINATES 2: -33.933, 18.474
 GOOD LUCK 😀
 */
 
-const whereAmI = function (lat, lng) {
-  fetch(
-    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
-  )
-    .then(response => {
-      if (!response.ok)
-        throw new Error(`Problem with geocoding ${response.status}`);
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      console.log(`You are in ${data.city}, ${data.countryCode}`);
+// const whereAmI = function (lat, lng) {
+//   fetch(
+//     `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+//   )
+//     .then(response => {
+//       if (!response.ok)
+//         throw new Error(`Problem with geocoding ${response.status}`);
+//       return response.json();
+//     })
+//     .then(data => {
+//       console.log(data);
+//       console.log(`You are in ${data.city}, ${data.countryCode}`);
 
-      const country = data.countryName.toLowerCase();
-      console.log(country);
-      return fetch(`https://restcountries.com/v2/name/${country}`);
-    })
-    .then(response => {
-      if (!response.ok)
-        throw new Error(`Country not found (${response.status})`);
-      return response.json();
-    })
-    .then(data => {
-      if (!data || data.length === 0) throw new Error('No country data found');
-      console.log(data[0]);
-      renderCountry(data[0]);
-    })
-    .catch(err => console.error(`${err.message} 💥`));
+//       const country = data.countryName.toLowerCase();
+//       console.log(country);
+//       return fetch(`https://restcountries.com/v2/name/${country}`);
+//     })
+//     .then(response => {
+//       if (!response.ok)
+//         throw new Error(`Country not found (${response.status})`);
+//       return response.json();
+//     })
+//     .then(data => {
+//       if (!data || data.length === 0) throw new Error('No country data found');
+//       console.log(data[0]);
+//       renderCountry(data[0]);
+//     })
+//     .catch(err => console.error(`${err.message} 💥`));
+// };
+// whereAmI(52.508, 13.381);
+// whereAmI(19.037, 72.873);
+// whereAmI(-33.933, 18.474);
+
+/*
+console.log('Test start');
+setTimeout(() => console.log('0 sec timer'), 0);
+Promise.resolve('Resolved promise 1').then(res => console.log(res));
+
+Promise.resolve('Resolved promise 2').then(res => {
+  for (let i = 0; i < 10000000; i++) {}
+  console.log(res);
+});
+
+console.log('Test end');
+*/
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  // Resolve the promise with a 50% chance
+  // If the random number is greater than or equal to 0.5, resolve the promise
+  // Otherwise, reject the promise
+  // Math.random() generates a random number between 0 and 1
+
+  console.log('Lottery draw is happening!');
+  setTimeout(() => {
+    if (Math.random() >= 0.5) {
+      resolve('You win!');
+    } else {
+      reject(new Error('You lost your money!'));
+    }
+  }, 2000);
+});
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
+
+// Promisifying setTimeout
+// This function takes a number of seconds as input and returns a promise
+// that resolves after that many seconds
+// This is useful for simulating delays in asynchronous code
+// It allows us to use setTimeout in a more flexible way
+// and to create a promise that resolves after a certain amount of time
+
+const wait = function (seconds) {
+  return new Promise(resolve => {
+    setTimeout(resolve, seconds * 1000);
+  });
 };
-whereAmI(52.508, 13.381);
-whereAmI(19.037, 72.873);
-whereAmI(-33.933, 18.474);
+
+wait(1)
+  .then(() => {
+    console.log('I waited for 1 seconds');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('I waited for 2 second');
+    return wait(2);
+  })
+  .then(() => {
+    console.log('I waited for 3 second');
+    return wait(3);
+  })
+  .then(() => {
+    console.log('I waited for 4 second');
+    return wait(4);
+  });
+
+// setTimeout(() => {
+//   console.log('1 second passed');
+//   setTimeout(() => {
+//     console.log('2 seconds passed');
+//     setTimeout(() => {
+//       console.log('3 seconds passed');
+//       setTimeout(() => {
+//         console.log('4 seconds passed');
+//       }, 1000);
+//     }, 1000);
+//   }, 1000);
+// }, 1000);
+
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject(new Error('abc')).catch(x => console.log(x));
