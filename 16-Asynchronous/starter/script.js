@@ -701,6 +701,7 @@ const createImage = function (imgPath) {
 
     image.addEventListener('load', () => {
       document.querySelector('.images').appendChild(image);
+      console.log('Betöltve:', imgPath);
       resolve(image);
     });
 
@@ -731,7 +732,7 @@ const loadNPause = async function () {
 
 const loadAll = async function (imgArr) {
   try {
-    const imgs = imgArr.map(img => createImage(img));
+    const imgs = imgArr.map(async img => await createImage(img));
     const imgElements = await Promise.all(imgs);
     imgElements.forEach(img => img.classList.add('parallel'));
   } catch (err) {
