@@ -114,6 +114,46 @@ const state = {
 const stateClone = Object.assign({}, state);
 const stateDeepClone = cloneDeep(state);
 
+state.user.loggedIn = false;
 console.log(stateClone);
 
 console.log(stateDeepClone);
+
+if (module.hot) {
+  module.hot.accept();
+}
+
+class Person {
+  #greeting = 'Hey';
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.#greeting}, ${this.name}`);
+  }
+}
+const jonas = new Person('Jonas');
+
+console.log('Jonas' ?? null);
+
+console.log(cart.find(el => el.quantity >= 2));
+Promise.resolve('TEST').then(x => console.log(x));
+
+//import 'core-js/stable';
+// import 'core-js/stable/array/find';
+// import 'core-js/stable/promise';
+
+// Polifilling async functions
+import 'regenerator-runtime/runtime';
+
+console.log('TEST222');
+console.log('TEST333');
+console.log('TEST444');
+console.log('TEST555');
+console.log('TEST666');
+console.log('TEST777');
+console.log('TEST888');
+console.log('TEST999');
+console.log('TEST101010');
+console.log('TEST1111');
+console.log('TEST1212');
+console.log('TEST1313');
+console.log('TEST1414');
