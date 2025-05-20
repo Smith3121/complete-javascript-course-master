@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# Parcel cache
+.parcel-cache/
+
+# Build output
+dist/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VS Code settings
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Env files
+.env

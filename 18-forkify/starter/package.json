@@ -1,0 +1,17 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "Recipe application",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Kovács Ákos",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.15.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.15.1"
+  }
+}
