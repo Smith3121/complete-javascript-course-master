@@ -9,7 +9,9 @@
   "author": "Kovács Ákos",
   "license": "ISC",
   "dependencies": {
-    "parcel": "^2.15.1"
+    "core-js": "^3.42.0",
+    "parcel": "^2.15.1",
+    "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.15.1"
